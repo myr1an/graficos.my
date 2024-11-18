@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes Sociais</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <header>
+        <h1>Relatório de vícios no celular</h1>
+        <nav>
+            <a href="index.html">Pessoas do mundo inteiro</a>
+        </nav>
+    </header>
+    <main class="graficos-section">
+        <section id="graficos-container" class="graficos-container">
+            <article class="graficos-container__texto">
+                <p>Você sabia que o mundo tem 5,4 bilhões de pessoas conectadas na internet e que  representam aproximadamente 67% da população mundial, um ser humano fica online, em média 6 horas e 43 minutos conectado. Na prática, cada usuário fica conectado à web mais de  100 dias por ano, ou 40% do tempo em que está acordado. Veja abaixo os dados detalhados sobre o impacto global:</p>
+            </article>
+            <!-- Gráfico -->
+            <div id="grafico1" class="grafico"></div>
+        </section>
+    </main>
+    <footer>
+        <p>Desenvolvido por Myrian e Keila</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dadosGrafico = {
+                "Facebook": 22,
+                "Instagram": 18,
+                "Twitter": 10,
+                "LinkedIn": 7,
+                "TikTok": 15,
+                "WhatsApp": 28
+            };
+
+            // Organizando os dados para o gráfico
+            const redesSociais = Object.keys(dadosGrafico);
+            const usuarios = Object.values(dadosGrafico);
+
+            const data = [
+                {
+                    x: redesSociais, 
+                    y: usuarios, 
+                    type: 'bar',
+                    marker: {
+                        color: '#DDDDDD' // Cor do gráfico
+                    }
+                }
+            ];
+
+            const layout = {
+                plot_bgcolor: '#340606',
+                paper_bgcolor: '#340606',
+                title: {
+                    text: 'O uso das redes sociais:',
+                    x: 0,
+                    font: {
+                        color: '#DDDDDD',
+                        size: 30,
+                        font: 'Nunito Sans'
+                    }
+                },
+                xaxis: {
+                    tickfont: {
+                        family: 'Nunito Sans',
+                        size: 16,
+                        color: '#DDDDDD'
+                    },
+                    title: {
+                        text: 'Redes Sociais',
+                        font: {
+                            color: '#5a1e2d'
+                        }
+                    }
+                },
+                yaxis: {
+                    tickfont: {
+                        family: 'Nunito Sans',
+                        size: 16,
+                        color: '#DDDDDD'
+                    },
+                    title: {
+                        text: 'Quantidade de usuários (em bilhões)',
+                        font: {
+                            color: '#5a1e2d'
+                        }
+                    }
+                }
+            };
+
+            // Renderizando o gráfico
+            Plotly.newPlot('grafico1', data, layout);
+        });
+    </script>
+</body>
+</html>
